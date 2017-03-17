@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-listing.component.css']
 })
 export class AddListingComponent implements OnInit {
-
 title:any;
 bedrooms:any;
 owner:any;
@@ -17,7 +16,7 @@ price:any;
 type:any;
 image:any;
 
-  constructor(
+    constructor(
     private firebaseService :FirebaseService,
     private router:Router
   )
@@ -37,6 +36,6 @@ onAddSubmit(){
  }
 this.firebaseService.addListing(listing);
 this.router.navigate(['listings']);
- 
 }
+
 }

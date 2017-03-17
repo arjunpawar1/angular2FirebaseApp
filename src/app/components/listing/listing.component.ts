@@ -16,24 +16,26 @@ imageUrl:any;
 
   ngOnInit() {
 //Get ID
-    this.id = this.route.snapshot.params['id'];
-    this.firebaseService.getListingsDetails(this.id).subscribe(listing=>{
+      this.id = this.route.snapshot.params['id'];
+      this.firebaseService.getListingsDetails(this.id).subscribe(listing=>{
       this.listing = listing;
-    console.log(listing);
-      
-      //Storage Ref
-//getting image from Firebase
-
-let storageRef = firebase.storage().ref();
-let spaceRef = storageRef.child(listing.path);
-storageRef.child(listing.path).getDownloadURL().then((url)=>{
-  //Set the Image imageUrl
-  this.imageUrl = url;
+        //Storage Ref
+      //getting image from Firebase
+      let storageRef = firebase.storage().ref();
+      let spaceRef = storageRef.child(listing.path);
+      storageRef.child(listing.path).getDownloadURL().then((url)=>{
+    //Set the Image imageUrl
+    this.imageUrl = url;
 }).catch((error)=>{
   console.log('Error: '+error);
 });
 
     });
   }
+
+deleteListing()
+{
+      this.firebaseService.deleteListing(this.listing);
+}
 
 }

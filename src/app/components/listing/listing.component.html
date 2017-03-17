@@ -12,10 +12,9 @@
                 <li class="list-group-item">Bedrooms: {{listing.bedrooms}}</li>
                 <li class="list-group-item">Type: {{listing.type}}</li>
                 <li class="list-group-item">Price: {{listing.price}}</li>
-
             </ul>
         </div>
-        <a class="btn btn-default">Edit</a>
-        <a class="btn btn-danger">Delete</a>
+        <a [routerLink]="['/editListing/'+listing.$key]" class="btn btn-default">Edit</a>
+        <a (click)="deleteListing()" class="btn btn-danger">Delete</a>
     </div>
 </div>
